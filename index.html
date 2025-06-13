@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Ortega y Gasset: Vida, Obra y Pensamiento</title>
+    <style>
+        /* --- Importación de Fuentes de Google --- */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap');
+
+        /* --- Variables CSS --- */
+        :root {
+            --color-primario: #2c3e50; /* Azul oscuro */
+            --color-secundario: #34495e; /* Azul más claro */
+            --color-acento: #e67e22; /* Naranja */
+            --color-fondo: #ecf0f1; /* Gris claro */
+            --color-texto: #333;
+            --color-blanco: #ffffff;
+            --fuente-titulos: 'Montserrat', sans-serif;
+            --fuente-cuerpo: 'Lora', serif;
+        }
+
+        /* --- Estilos Generales --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fuente-cuerpo);
+            line-height: 1.7;
+            color: var(--color-texto);
+            background-color: var(--color-fondo);
+        }
+
+        /* --- Contenedor Principal --- */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- Tipografía --- */
+        h1, h2, h3 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid var(--color-acento);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--color-secundario);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--color-acento);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: var(--color-primario);
+            }
+
+        /* --- Cabecera y Navegación --- */
+        .main-header {
+            background: var(--color-blanco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+            .main-header .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .logo {
+            font-family: var(--fuente-titulos);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primario);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+            .main-nav ul li a {
+                padding: 10px 15px;
+                font-family: var(--fuente-titulos);
+                font-weight: 400;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .main-nav ul li a:hover {
+                    background-color: var(--color-acento);
+                    color: var(--color-blanco);
+                    border-radius: 5px;
+                }
+
+        /* --- Sección Hero --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://raw.githubusercontent.com/jmlucas68/filosofos/refs/heads/main/images/Ortega.jpg') no-repeat center center/cover;
+            color: var(--color-blanco);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+            .hero h1 {
+                color: var(--color-blanco);
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+
+            .hero .quote {
+                font-size: 1.5rem;
+                font-style: italic;
+                margin-top: 20px;
+                max-width: 800px;
+                font-family: var(--fuente-cuerpo);
+            }
+
+        /* --- Estructura de Secciones --- */
+        section {
+            padding: 80px 0;
+        }
+
+            section:nth-child(even) {
+                background-color: var(--color-blanco);
+            }
+
+        /* --- Animación de entrada --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* --- Tarjetas de Pensamiento --- */
+        .thought-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--color-blanco);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:nth-child(odd) .card {
+            background: #fdfdfd;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--color-acento);
+            margin-bottom: 15px;
+        }
+
+        .card blockquote {
+            font-style: italic;
+            border-left: 3px solid var(--color-acento);
+            padding-left: 15px;
+            margin-top: 15px;
+            color: var(--color-secundario);
+        }
+
+        /* --- Biografía (Timeline) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+            .timeline::after {
+                content: '';
+                position: absolute;
+                width: 4px;
+                background-color: var(--color-acento);
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                margin-left: -2px;
+            }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: var(--color-blanco);
+                border: 4px solid var(--color-acento);
+                top: 15px;
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--color-primario);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--color-primario);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--color-primario);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--color-primario) transparent transparent;
+        }
+
+        .right::after {
+            right: -10px;
+        }
+
+        .left::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--color-blanco);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+            .timeline-content h3 {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+
+            .timeline-content p {
+                font-size: 0.9rem;
+                margin: 0;
+            }
+
+        /* --- Obras Principales --- */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .work-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .work-links ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .work-links li {
+            margin-bottom: 5px;
+        }
+
+        /* --- Contexto e Influencias --- */
+        .context-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+            .context-grid ul {
+                list-style: none;
+                padding-left: 20px;
+            }
+
+            .context-grid li {
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+                .context-grid li::before {
+                    content: '›';
+                    position: absolute;
+                    left: -20px;
+                    color: var(--color-acento);
+                    font-weight: bold;
+                }
+
+        /* --- Fuentes y Recursos --- */
+        #fuentes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #fuentes li {
+            background: var(--color-blanco);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-left: 5px solid var(--color-acento);
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+            #fuentes li:hover {
+                transform: translateX(5px);
+            }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--color-primario);
+            color: var(--color-blanco);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- Responsividad --- */
+        @media(max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .main-header .container {
+                flex-direction: column;
+            }
+
+            .main-nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+                .main-nav ul li a {
+                    padding: 8px 10px;
+                }
+
+            .hero {
+                height: 70vh;
+            }
+
+                .hero .quote {
+                    font-size: 1.2rem;
+                }
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 10px;
+            }
+
+                .timeline-item.right {
+                    left: 0%;
+                }
+
+            .left::after, .right::after {
+                left: 10px;
+            }
+
+            .left::before, .right::before {
+                left: 50px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--color-primario) transparent transparent;
+            }
+
+            .context-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">Ortega y Gasset</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#biografia">Biografía</a></li>
+                    <li><a href="#pensamiento">Pensamiento</a></li>
+                    <li><a href="#obras">Obras</a></li>
+                    <li><a href="#contexto">Contexto</a></li>
+                    <li><a href="#fuentes">Fuentes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="fade-in">José Ortega y Gasset</h1>
+            <p class="quote fade-in">"Yo soy yo y mi circunstancia, y si no la salvo a ella no me salvo yo."</p>
+        </section>
+
+        <section id="biografia">
+            <div class="container">
+                <h2 class="fade-in">Biografía: Una Vida en su Circunstancia</h2>
+                <div class="timeline">
+                    <div class="timeline-item left fade-in">
+                        <div class="timeline-content">
+                            <h3>1883: Nacimiento</h3>
+                            <p>Nace en Madrid en una familia de la alta burguesía liberal e ilustrada, vinculada al periodismo y la política.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right fade-in">
+                        <div class="timeline-content">
+                            <h3>1905-1907: Formación en Alemania</h3>
+                            <p>Estudia en Leipzig, Berlín y, sobre todo, Marburgo. Entra en contacto con el neokantismo y la fenomenología.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left fade-in">
+                        <div class="timeline-content">
+                            <h3>1910: Cátedra en Madrid</h3>
+                            <p>Gana la cátedra de Metafísica de la Universidad Central de Madrid, que se convertirá en su principal plataforma intelectual.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right fade-in">
+                        <div class="timeline-content">
+                            <h3>1914: "Meditaciones del Quijote"</h3>
+                            <p>Publica su primer libro importante, donde formula su célebre "Yo soy yo y mi circunstancia".</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left fade-in">
+                        <div class="timeline-content">
+                            <h3>1923: Fundación de la Revista de Occidente</h3>
+                            <p>Crea la que será la publicación cultural más importante de España y una de las más prestigiosas de Europa, difundiendo las nuevas corrientes de pensamiento.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right fade-in">
+                        <div class="timeline-content">
+                            <h3>1930: "La rebelión de las masas"</h3>
+                            <p>Publica su obra de mayor repercusión internacional, un diagnóstico sobre la crisis de la cultura europea y el ascenso del "hombre-masa".</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left fade-in">
+                        <div class="timeline-content">
+                            <h3>1936-1945: Exilio</h3>
+                            <p>Con el estallido de la Guerra Civil, se exilia en Francia, Argentina y Portugal.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right fade-in">
+                        <div class="timeline-content">
+                            <h3>1955: Fallecimiento</h3>
+                            <p>Muere en Madrid, dejando un legado filosófico que marcaría profundamente el pensamiento español y latinoamericano del siglo XX.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pensamiento">
+            <div class="container">
+                <h2 class="fade-in">Claves de su Pensamiento</h2>
+                <div class="thought-grid">
+                    <div class="card fade-in">
+                        <div class="card-icon">💡</div>
+                        <h3>Raciovitalismo y Razón Vital</h3>
+                        <p>Ortega propone superar el antagonismo entre racionalismo (la razón pura) y vitalismo (la vida irracional). Para él, la realidad radical es la vida de cada cual. La razón no es enemiga de la vida, sino su instrumento para navegar en el mundo. La "razón vital" es una razón histórica, contextual, al servicio del proyecto vital de cada individuo.</p>
+                        <blockquote>"La vida es una serie de colisiones con el futuro; no es una suma de lo que hemos sido, sino de lo que anhelamos ser."</blockquote>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon">🌍</div>
+                        <h3>El Perspectivismo</h3>
+                        <p>No existe una verdad única y absoluta accesible desde una perspectiva privilegiada. La realidad solo puede ser captada desde la perspectiva particular de cada individuo ("yo y mi circunstancia"). La verdad es la suma o integración de todas las perspectivas posibles. La perspectiva no deforma la realidad, es uno de sus componentes.</p>
+                        <blockquote>"Cada individuo —persona, pueblo, época— es un órgano insustituible para la conquista de la verdad."</blockquote>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon">👤</div>
+                        <h3>"Yo soy yo y mi circunstancia"</h3>
+                        <p>Es la fórmula que resume su filosofía. El "yo" no es una entidad abstracta, sino que está inseparablemente unido a su "circunstancia" (el mundo, el cuerpo, la cultura, la historia). La tarea del ser humano es "salvar su circunstancia", es decir, comprenderla y actuar sobre ella para realizar su proyecto vital. El hombre no tiene naturaleza, sino que tiene historia.</p>
+                        <blockquote>"La vida nos es dada, pero no nos es dada hecha, sino que necesitamos hacérnosla nosotros, cada cual la suya."</blockquote>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon">👥</div>
+                        <h3>El Hombre-Masa</h3>
+                        <p>En "La rebelión de las masas", analiza el surgimiento de un nuevo tipo humano. El "hombre-masa" no es una clase social, sino un modo de ser: el individuo que no se exige nada, que se siente satisfecho tal como es, y que impone su mediocridad y sus deseos sin someterlos a ninguna instancia superior. Es un análisis crítico de la modernidad y sus peligros.</p>
+                        <blockquote>"Masa es todo aquel que no se valora a sí mismo —en bien o en mal— por razones especiales, sino que se siente 'como todo el mundo'."</blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="obras">
+            <div class="container">
+                <h2 class="fade-in">Obras Principales</h2>
+                <div class="works-grid">
+                    <div class="card work-card fade-in">
+                        <div>
+                            <h3>Meditaciones del Quijote (1914)</h3>
+                            <p>Su primer libro, donde expone las bases de su filosofía perspectivista y su concepto de "circunstancia".</p>
+                        </div>
+                        <div class="work-links">
+                            <ul>
+                                <li><a href="https://archive.org/details/meditacionesdelq00orte" target="_blank">[Gratis] Enlace en Archive.org</a></li>
+                                <li><a href="https://www.amazon.es/dp/8437600106/" target="_blank">[Compra] Enlace en Amazon.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card work-card fade-in">
+                        <div>
+                            <h3>El tema de nuestro tiempo (1923)</h3>
+                            <p>Desarrolla la doctrina del raciovitalismo y el perspectivismo como superación de la modernidad racionalista.</p>
+                        </div>
+                        <div class="work-links">
+                            <ul>
+                                <li><a href="https://archive.org/details/eltemadenuestrot00orte" target="_blank">[Gratis] Enlace en Archive.org</a></li>
+                                <li><a href="https://www.amazon.es/dp/8420678854/" target="_blank">[Compra] Enlace en Amazon.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card work-card fade-in">
+                        <div>
+                            <h3>La rebelión de las masas (1930)</h3>
+                            <p>Su ensayo más famoso y polémico. Un análisis sociológico y filosófico sobre el ascenso del "hombre-masa" en Europa.</p>
+                        </div>
+                        <div class="work-links">
+                            <ul>
+                                <li><a href="https://archive.org/details/larebeliondelasmasas_202003" target="_blank">[Gratis] Enlace en Archive.org</a></li>
+                                <li><a href="https://www.gutenberg.org/ebooks/73111" target="_blank">[Gratis] Enlace en Project Gutenberg</a></li>
+                                <li><a href="https://www.amazon.es/dp/8467034320/" target="_blank">[Compra] Enlace en Amazon.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card work-card fade-in">
+                        <div>
+                            <h3>¿Qué es filosofía? (1929, publicado en 1957)</h3>
+                            <p>Recopilación del curso que impartió en Madrid con enorme éxito, donde define la filosofía como una necesidad vital del ser humano.</p>
+                        </div>
+                        <div class="work-links">
+                            <ul>
+                                <li><a href="https://www.amazon.es/dp/8420609046/" target="_blank">[Compra] Enlace en Amazon.es</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contexto">
+            <div class="container">
+                <h2 class="fade-in">Contexto e Influencias</h2>
+                <div class="context-grid">
+                    <div class="card fade-in">
+                        <h3>Contexto Histórico y Filosófico</h3>
+                        <ul>
+                            <li><strong>España:</strong> Crisis del 98, regeneracionismo, inestabilidad política, dictadura de Primo de Rivera, Segunda República, Guerra Civil y Franquismo. Ortega es una figura central de la "Generación del 14".</li>
+                            <li><strong>Europa:</strong> Periodo de entreguerras, auge de los totalitarismos, crisis de la ciencia y la razón (positivismo), vanguardias artísticas.</li>
+                            <li><strong>Filosofía:</strong> Reacción contra el positivismo y el idealismo. Auge del vitalismo (Nietzsche, Dilthey), la fenomenología (Husserl) y el neokantismo (Escuela de Marburgo).</li>
+                        </ul>
+                    </div>
+                    <div class="card fade-in">
+                        <h3>Influencias Recibidas y Ejercidas</h3>
+                        <ul>
+                            <li><strong>Recibidas:</strong> Neokantianos de Marburgo (Hermann Cohen, Paul Natorp), Edmund Husserl, Wilhelm Dilthey, Friedrich Nietzsche, Georg Simmel y la tradición filosófica española (Cervantes, Gracián).</li>
+                            <li><strong>Ejercidas:</strong> Su impacto fue inmenso. Influyó directamente en la "Escuela de Madrid" (Julián Marías, María Zambrano, Manuel García Morente) y en todo el pensamiento en lengua española, especialmente en Latinoamérica (Octavio Paz, Leopoldo Zea).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fuentes">
+            <div class="container">
+                <h2 class="fade-in">Recursos y Fuentes de Información</h2>
+                <ul class="fade-in">
+                    <li>
+                        <strong>Fundación Ortega-Marañón:</strong> Principal institución que preserva y difunde su legado. <a href="https://ortegaygasset.edu/" target="_blank">Visitar sitio web</a>
+                    </li>
+                    <li>
+                        <strong>Wikipedia:</strong> Un buen punto de partida con información general sobre su vida y obra. <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_Ortega_y_Gasset" target="_blank">Leer artículo en Wikipedia</a>
+                    </li>
+                    <li>
+                        <strong>Stanford Encyclopedia of Philosophy:</strong> Análisis académico en profundidad (en inglés). <a href="https://plato.stanford.edu/entries/ortega-y-gasset/" target="_blank">Leer entrada en SEP</a>
+                    </li>
+                    <li>
+                        <strong>Academia.edu:</strong> Numerosos artículos y trabajos de investigación sobre aspectos específicos de su filosofía. <a href="https://www.academia.edu/Documents/in/Jose_Ortega_y_Gasset" target="_blank">Buscar artículos en Academia.edu</a>
+                    </li>
+                    <li>
+                        <strong>Cervantes Virtual:</strong> Portal con obras digitalizadas y estudios críticos. <a href="http://www.cervantesvirtual.com/portales/jose_ortega_y_gasset/" target="_blank">Explorar en Cervantes Virtual</a>
+                    </li>
+                    <li>
+                        <strong>Archive.org:</strong> Biblioteca digital con varias de sus obras en dominio público o de libre acceso. <a href="https://archive.org/search?query=creator%3A%22Ortega+y+Gasset%2C+Jos%C3%A9%22" target="_blank">Buscar obras en Archive.org</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Página creada en 2023 con fines educativos. Homenaje a uno de los pensadores más influyentes del siglo XX.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Script para animación de "fade-in" al hacer scroll ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.15, // El elemento se considera visible cuando el 15% está en pantalla
+                rootMargin: "0px 0px -50px 0px" // Reduce el área de "visibilidad"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target); // Dejar de observar una vez que es visible
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+
+</body>
+</html>
